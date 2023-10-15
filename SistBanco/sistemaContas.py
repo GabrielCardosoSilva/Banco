@@ -48,7 +48,7 @@ def arquivosContas():
     destino = f"C:\\Users\\Casa\\PycharmProjects\\Banco\\bancos\\{arquivo}"
 
     if os.path.exists(destino):
-        print(f"Banco {arquivo}, Encontrado!\n\n")
+        letreiro(f"Entrando No Banco {arquivo}!", 'verde')
     else:
         open(destino, "a")
         print(f"Banco {arquivo} Criado com Sucesso!")
@@ -65,7 +65,8 @@ def CriarConta(cpf, nome, sobrenome, dataNascimento, senha_pessoal, arquivo):
 
         with open(arquivo, "a") as file:
             file.write(novoUsuario)
-            letreiro(f"Novo Usuário {nome} Cadastrado com Sucesso", "verde")
+            letreiro(f"Novo Usuário {nome} Cadastrado com Sucesso\nInsira o nome do Banco Novamente", "verde")
+
     except Exception:
         print("\033[31m@@ ERRO!! TENTE NOVAMENTE  @@\033[m")
 
@@ -171,9 +172,10 @@ def entrarConta(cpf, arquivo, perfis, extrato):
 
         if ordem in "D":
             deposito = float(input("Quantidade que quer depositar: R$"))
-            saldo += deposito
-            print(f"\033[32mDeposito de R${deposito:.2f} concluido!")
-            extrato += f"\033[32m{'Deposito':_<30}R${deposito:.2f}\033[m\n"
+            if deposito > 0:
+                saldo += deposito
+                print(f"\033[32mDeposito de R${deposito:.2f} concluido!")
+                extrato += f"\033[32m{'Deposito':_<30}R${deposito:.2f}\033[m\n"
 
         if ordem in "S":
             limite = saldo

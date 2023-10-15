@@ -37,13 +37,14 @@ def banco():
                 senha_pessoal = str(input("→Crie Uma Senha\nDigite: "))
 
                 CriarConta(cpf, nome, sobrenome, dataNascimento, senha_pessoal, arquivo)
+                break
 
             elif ordem in "V":
                 visualizar(arquivo)
 
             elif ordem in "R":
                 reset()
-                letreiro("Sistema Resetado")
+                letreiro("Sistema Resetado Com Sucesso" )
                 break
             sleep(1)
         if ordem in "S":
